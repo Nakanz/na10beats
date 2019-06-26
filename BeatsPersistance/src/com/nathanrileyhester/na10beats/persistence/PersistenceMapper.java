@@ -1,4 +1,4 @@
-package com.nathanrileyhester.na10beats.persistance;
+package com.nathanrileyhester.na10beats.persistence;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

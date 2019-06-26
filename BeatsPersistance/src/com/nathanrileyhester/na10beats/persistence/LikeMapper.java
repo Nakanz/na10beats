@@ -1,4 +1,4 @@
-package com.nathanrileyhester.na10beats.persistance;
+package com.nathanrileyhester.na10beats.persistence;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -7,8 +7,8 @@ import java.util.ArrayList;
 
 import com.nathanrileyhester.na10beats.domain.Author;
 
-public class AuthorMapper extends PersistenceMapper {
-	
+public class LikeMapper extends PersistenceMapper {
+	//FIX THIS AFTER TRACK IS FIXED
 	public ArrayList<Author> map(Connection con) {
 		ArrayList<Author> eList = new ArrayList<Author>();
 		
@@ -33,5 +33,4 @@ public class AuthorMapper extends PersistenceMapper {
 		}
 		return eList;
 	}
-
 }
