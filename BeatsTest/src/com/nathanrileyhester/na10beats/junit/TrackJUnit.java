@@ -11,22 +11,23 @@ import java.util.Iterator;
 
 import org.junit.jupiter.api.Test;
 
-import com.nathanrileyhester.na10beats.domain.Author;
-import com.nathanrileyhester.na10beats.persistence.AuthorMapper;
+
+import com.nathanrileyhester.na10beats.domain.Track;
+import com.nathanrileyhester.na10beats.persistence.TrackMapper;
 
 /**
  * @author nathanhester
  *
  */
-class AuthorJUnit {
+class TrackJUnit {
 
 	@Test
 	void test() {
-		AuthorMapper am = new AuthorMapper();
-		Connection conn = am.connectToDb();
-		ArrayList<Author> authors = am.map(conn);
-		assertNotNull(authors);
-		Iterator<Author> i = authors.iterator();
+		TrackMapper tm = new TrackMapper();
+		Connection conn = tm.connectToDb();
+		ArrayList<Track> tracks = tm.map(conn);
+		assertNotNull(tracks);
+		Iterator<Track> i = tracks.iterator();
 		while(i.hasNext()) {
 			System.out.println(i.next());
 		}

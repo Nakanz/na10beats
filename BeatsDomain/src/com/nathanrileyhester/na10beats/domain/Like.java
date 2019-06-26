@@ -19,6 +19,8 @@ public class Like extends Na10Object {
 		this.time = time;
 	}
 	
-	
+	public String toString() {
+		return super.toString() + " who [" + getWho() + "] time [" + getTime() + "]" ;
+	}
 
 }

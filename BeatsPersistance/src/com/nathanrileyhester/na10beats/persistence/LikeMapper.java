@@ -5,32 +5,29 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import com.nathanrileyhester.na10beats.domain.Author;
+import com.nathanrileyhester.na10beats.domain.Like;
 
 public class LikeMapper extends PersistenceMapper {
-	//FIX THIS AFTER TRACK IS FIXED
-	public ArrayList<Author> map(Connection con) {
-		ArrayList<Author> eList = new ArrayList<Author>();
-		
+	
+	public ArrayList<Like> map(Connection con, int TrackID) {		
+		ArrayList<Like> alikes = new ArrayList<Like>();
 		try {
 			//create the statement object
 			Statement stmt = con.createStatement();
 
 			
-			ResultSet rs = stmt.executeQuery("select AID, firstN, lastN, homepage from Author;");
+			ResultSet rs = stmt.executeQuery("select LID, TRACKid, Lwho, Ltime from TLIKE where TRACKid = " + TrackID + ";");
 			
 			while (rs.next()) {
-				Author au = new Author();
-				au.setId(rs.getInt("AID"));
-				au.setFirst(rs.getString("firstN"));
-				au.setLast(rs.getString("lastN"));
-				au.setAuthorHomePage(rs.getString("homepage"));
-				
-				eList.add(au);
+				Like lk = new Like();
+				lk.setId(rs.getInt("LID"));
+				lk.setWho((rs.getString("Lwho")));
+				lk.setTime((rs.getDate("Ltime")));
+				alikes.add(lk);
 			}
 		} catch (Exception e) {
 			System.out.println(e);
 		}
-		return eList;
+		return alikes;
 	}
 }

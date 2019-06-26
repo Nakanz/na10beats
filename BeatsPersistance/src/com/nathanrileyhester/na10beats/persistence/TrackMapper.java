@@ -5,10 +5,11 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import com.nathanrileyhester.na10beats.domain.Like;
 import com.nathanrileyhester.na10beats.domain.Track;
 
 public class TrackMapper extends PersistenceMapper {
-	private ArrayList<Track> map(Connection con) {
+	public ArrayList<Track> map(Connection con) {
 		ArrayList<Track> eList = new ArrayList<Track>();
 		
 		try {
@@ -16,13 +17,22 @@ public class TrackMapper extends PersistenceMapper {
 			Statement stmt = con.createStatement();
 
 			
-			ResultSet rs = stmt.executeQuery("select TID, Tname, Ptrack, Author from TRACK;");
+			ResultSet rs = stmt.executeQuery("select TID, AuthorID, Tname, Ptrack from TRACK;");
 			
 			while (rs.next()) {
 				Track tk = new Track();
-				
-				
+				tk.setId(rs.getInt("TID"));
+				tk.setName(rs.getString("Tname"));
+				tk.setTrack(rs.getBytes("Ptrack"));
 			
+				AuthorMapper am = new AuthorMapper();
+				tk.setAuthor(am.map(con, rs.getInt("AuthorID")));
+
+				ArrayList<Like> la = new ArrayList<Like>();
+				LikeMapper lm = new LikeMapper();
+				la = lm.map(con, tk.getId());
+				tk.setLikes(la);
+				
 				eList.add(tk);
 			}
 		} catch (Exception e) {

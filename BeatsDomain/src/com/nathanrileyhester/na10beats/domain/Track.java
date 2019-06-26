@@ -32,7 +32,15 @@ public class Track extends Na10Object {
 	public void setLikes(ArrayList<Like> likes) {
 		this.likes = likes;
 	}
+	public int amountOfLikes() {
+		
+		return (likes == null) ? 0 : likes.size();
+	}
 	
+	public String toString() {
+		return super.toString() + " Trackname [" + getName() + "] trackfile [" + getTrack() + 
+				"] amount of likes [" + amountOfLikes() + "]" + getLikes() + getAuthor(); 
+	}
 	
 
 }
