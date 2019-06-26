@@ -7,7 +7,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 
-public abstract class PersistanceMapper {
+public abstract class PersistenceMapper {
 	public Connection connectToDb() {
 		Connection con = null;
 		try {

@@ -2,7 +2,7 @@ package com.nathanrileyhester.na10beats.domain;
 
 import java.util.Date;
 
-public class Like {
+public class Like extends Na10Object {
 	private String who;
 	private Date time;
 	

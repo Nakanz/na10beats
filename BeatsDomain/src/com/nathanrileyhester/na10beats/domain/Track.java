@@ -2,7 +2,7 @@ package com.nathanrileyhester.na10beats.domain;
 
 import java.util.*;
 
-public class Track {
+public class Track extends Na10Object {
 	private String name;
 	private byte[] track;
 	private Author author;

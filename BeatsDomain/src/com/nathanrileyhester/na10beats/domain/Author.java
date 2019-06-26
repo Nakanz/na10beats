@@ -11,5 +11,7 @@ public class Author extends Person{
 		this.authorHomePage = authorHomePage;
 	}
 	
-
+	public String toString() {
+		return super.toString() + " HomePage [" + getAuthorHomePage() + "]"; 
+	}
 }
