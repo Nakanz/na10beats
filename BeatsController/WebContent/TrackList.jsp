@@ -24,7 +24,7 @@
 
 	Iterator<Track> i = tracks.iterator();
 %>
-<table>
+<table border = "1">
 	<tr>
 		<th>ID</th>
 		<th>Track Name</th>
@@ -44,7 +44,9 @@
 <%
 	}
 %>
+
 </table>
+<a href="NewTrack.jsp">New Track</a>
 
 </body>
 </html>

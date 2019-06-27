@@ -2,10 +2,10 @@ package com.nathanrileyhester.na10beats.persistence;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
+/*import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.ArrayList;
-
+import java.util.ArrayList;*/
+  
 
 public abstract class PersistenceMapper {
 	public Connection connectToDb() {
