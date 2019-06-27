@@ -40,5 +40,26 @@ public class TrackMapper extends PersistenceMapper {
 		}
 		return eList;
 	}
+	
+	public void insert(Connection con, Track obj, int authorId) {
+		obj.setId(getNextId(con, "TRACK"));
+		
+		try {
+			//create the statement object
+			Statement stmt = con.createStatement();
+			//insert new track
+			String sql = "INSERT INTO TRACK(TID, AuthorID, Tname) VALUES(" + obj.getId() + ", " + 
+					authorId + ", '" + obj.getName() + "');";
+			stmt.executeUpdate(sql);
+		
+		//	con.commit();	
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	
+	}
+		
+	
 
 }

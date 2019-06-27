@@ -12,12 +12,35 @@
 <title>Add a New Track</title>
 </head>
 <body>
-	<form action= "trackServlet" method = "post">
+<%
+	AuthorMapper am = new AuthorMapper();
+	Connection conn = am.connectToDb();
+	ArrayList<Author> authors = am.map(conn);
+	boolean connected = false;	
+	if (conn != null) {
+		connected = true;
+	} 
+
+	Iterator<Author> i = authors.iterator();
+%>
+	<form action= "TrackServlet" method = "post">
 	  Track Name:<br>
 	  <input type="text" name="TrackName" value="">
 	  <br>
 	   Author:<br>
-	  <input type="text" name="AuthorName" value="">
+	   	<select name="author">
+<%
+	while(i.hasNext()) {
+		Author au = i.next();
+%>
+		  <option value="<%= au.getId() %>"> <%=au.getFirst() + " " + au.getLast() %></option>
+		 
+<%
+	}
+	am.closeDB(conn);
+%>		
+		</select>
+	  
 	  <br><br>
 	  <input type="submit" value="Submit">
 	</form> 

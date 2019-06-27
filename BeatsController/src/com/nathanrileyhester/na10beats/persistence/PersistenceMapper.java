@@ -37,7 +37,7 @@ public abstract class PersistenceMapper {
 		}
 
 	}
-	public int getNextId(Connection con, String tablename) {
+	public int getNextId(Connection con, String tablename, String idName) {
 		
 		int count=0;
 		try {
@@ -45,7 +45,7 @@ public abstract class PersistenceMapper {
 			Statement stmt = con.createStatement();
 
 			
-			ResultSet rs = stmt.executeQuery("select count(*) from " + tablename + ";");
+			ResultSet rs = stmt.executeQuery("select max(" + idName + ") from " + tablename + ";");
 			
 			while (rs.next()) {
 				count = rs.getInt(1);

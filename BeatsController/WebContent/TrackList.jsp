@@ -36,13 +36,16 @@
 		Track t = i.next();
 %>
 	<tr>
-		<td><%= t.getId() %>
-		<td><%= t.getName() %>
-		<td><%= t.getAuthor().getFirst() + " " + t.getAuthor().getLast() %>
+		<td><%= t.getId() %></td>
+		<td><%= t.getName() %></td>
+		<td><%= t.getAuthor().getFirst() + " " + t.getAuthor().getLast() %></td>
+		<td><a href="/BeatsController/TrackServlet?delTrackId=<%= t.getId() %>">DEL</a></td>
+		<td><a href="/BeatsController/TrackServlet?likeTrackId=<%= t.getId() %>">LIKE [<%=t.amountOfLikes() %>]</a></td>
 	</tr>
 
 <%
 	}
+	tm.closeDB(conn);
 %>
 
 </table>
