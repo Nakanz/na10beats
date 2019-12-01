@@ -1,2 +1,2 @@
 # na10beats
-a beat repository
+a low-level full stack application intended for hosting mp3 files
